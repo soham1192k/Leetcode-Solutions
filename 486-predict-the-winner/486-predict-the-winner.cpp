@@ -14,7 +14,7 @@ public:
         int sum=0;
         for(int i=0;i<n;i++) sum+=nums[i];
         int twoplayer=sum+dp[0][n-1][0];
-        if(twoplayer>=2*sum-twoplayer) return true;
+        if(twoplayer>=sum) return true;
         return false;
     }
 };
