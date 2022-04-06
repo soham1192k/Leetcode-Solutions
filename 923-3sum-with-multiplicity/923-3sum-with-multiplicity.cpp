@@ -2,7 +2,7 @@ class Solution {
 public:
     int threeSumMulti(vector<int>& arr, int target) {
         int n=arr.size();
-        unordered_map<int,int>mp;
+        map<int,int>mp;
         int ans=0;
         int mod=1e9+7;
         for(int i=0;i<n;i++){
