@@ -15,11 +15,11 @@ public:
                 }
             }
         }
-        vector<int>ans;
+        nums.clear();
         for(int i=1;i<=k;i++){
-            ans.push_back(q.top().second);
+            nums.push_back(q.top().second);
             q.pop();
         }
-        return ans;
+        return nums;
     }
 };
