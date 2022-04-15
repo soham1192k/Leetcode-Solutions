@@ -13,14 +13,13 @@ class Solution {
 public:
     TreeNode* trimBST(TreeNode* root, int low, int high) {
         if(root==NULL) return NULL;
-        // if(root->left==NULL&&root->right==NULL&&!(root->val>=low&&root->val<=high)) return NULL;
-        // else if(root->left==NULL&&root->right==NULL) return root;
-        if(root->val>=low&&root->val<=high){
+        int v=root->val;
+        if(v>=low&&v<=high){
             root->left=trimBST(root->left,low,high);
             root->right=trimBST(root->right,low,high);
             return root;
         }
-        else if(root->val<low) return trimBST(root->right,low,high);
+        else if(v<low) return trimBST(root->right,low,high);
         else return trimBST(root->left,low,high);
     }
 };
