@@ -15,7 +15,6 @@ public:
             if(itr->second-1>=start&&itr->second-1<=end-1) return false;
             if(itr==s.begin()) break;
             itr--;
-            if(itr->second<=start) break;
         }
         s.insert({start,end});
         return true;
