@@ -4,7 +4,7 @@ public:
     int dp[11][1024][2][2];
     int func(int idx,int mask,int n,int flexible,int seen){
         if(idx==n){
-            if(__builtin_popcount(mask)!=0) return 1;
+            if(mask!=0) return 1;
             return 0;
         }
         if(dp[idx][mask][flexible][seen]!=-1) return dp[idx][mask][flexible][seen];
