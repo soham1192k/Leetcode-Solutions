@@ -20,15 +20,13 @@ public:
         if(philosopher&1){
             sem_wait(&v[left]);
             sem_wait(&v[right]);
-            pickLeftFork();
-            pickRightFork();
         }
         else{
             sem_wait(&v[right]);
             sem_wait(&v[left]);
-            pickRightFork();
-            pickLeftFork();
         }
+        pickLeftFork();
+        pickRightFork();
         eat();
         putLeftFork();
         putRightFork();
