@@ -1,19 +1,29 @@
+struct monotone_deque{
+    deque<int>dq;
+    void insert(int x){
+        while(!dq.empty()&&dq.front()<x) dq.pop_front();
+        dq.push_front(x);
+    }
+    void remove(int x){
+        if(!dq.empty()&&dq.back()==x) dq.pop_back();
+    }
+    int getmax(){
+        if(!dq.empty()) return dq.back();
+        else return -1;
+    }
+};
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        multiset<int>s;
         int n=nums.size();
-        for(int i=0;i<k;i++) s.insert(nums[i]);
+        monotone_deque dq;
+        for(int i=0;i<k;i++) dq.insert(nums[i]);
         vector<int>ans;
-        auto itr=s.end();
-        itr--;
-        ans.push_back(*itr);
+        ans.push_back(dq.getmax());
         for(int i=k;i<n;i++){
-            s.erase(s.find(nums[i-k]));
-            s.insert(nums[i]);
-            itr=s.end();
-            itr--;
-            ans.push_back(*itr);
+            dq.remove(nums[i-k]);
+            dq.insert(nums[i]);
+            ans.push_back(dq.getmax());
         }
         return ans;
     }
